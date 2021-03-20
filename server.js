@@ -96,14 +96,14 @@ app.get("/profile/:id", (req, res) => {
       if (user.length) {
         res.json(user[0]);
       } else {
-        res.status(400).json("Unable to register");
+        res.status(400).json("Unable to get user.");
       }
     })
     .catch((err) => res.status(400).json("An error has occurred"));
 });
 
 app.put("/image", (req, res) => {
-  const { id } = req.params;
+  const { id } = req.body;
   db("users")
     .where("id", "=", id)
     .increment("entries", 1)
